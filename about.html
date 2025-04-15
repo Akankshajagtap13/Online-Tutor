@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - AcademyTutor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Global Styles */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2980b9;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      color: white;
+    }
+    
+    .btn-accent {
+      background-color: var(--accent-color);
+    }
+    
+    .btn-accent:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Header Section */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      color: var(--dark-color);
+      font-weight: 600;
+      position: relative;
+    }
+    
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after, nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      padding: 130px 0 60px;
+      text-align: center;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+    
+    .page-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    
+    /* Breadcrumb */
+    .breadcrumb {
+      background-color: #f2f2f2;
+      padding: 15px 0;
+    }
+    
+    .breadcrumb ul {
+      list-style: none;
+      display: flex;
+    }
+    
+    .breadcrumb ul li {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .breadcrumb ul li:after {
+      content: '/';
+      margin-left: 10px;
+      color: #999;
+    }
+    
+    .breadcrumb ul li:last-child:after {
+      display: none;
+    }
+    
+    .breadcrumb ul li a {
+      color: var(--primary-color);
+    }
+    
+    .breadcrumb ul li.active {
+      color: #777;
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: 80px 0;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+      height: 450px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .about-text h2 {
+      font-size: 2.2rem;
+      color: var(--dark-color);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .about-text h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    .about-text p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+    
+    .mission-vision {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .mission-box, .vision-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .mission-box h3, .vision-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+    }
+    
+    .mission-box h3 i, .vision-box h3 i {
+      margin-right: 10px;
+    }
+    
+    /* Counter Section */
+    .counter-section {
+      background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://via.placeholder.com/1920x600') center/cover no-repeat;
+      padding: 80px 0;
+      color: white;
+      text-align: center;
+    }
+    
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    
+    .counter-box {
+      padding: 20px;
+    }
+    
+    .counter-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .counter {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .counter-title {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Our Team Section */
+    .team-section {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #777;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    
+    .team-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .team-image {
+      height: 250px;
+      overflow: hidden;
+    }
+    
+    .team-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .team-card:hover .team-image img {
+      transform: scale(1.1);
+    }
+    
+    .team-content {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .team-name {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+    
+    .team-role {
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .team-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      background-color: #f2f2f2;
+      border-radius: 50%;
+      color: #777;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .team-social a:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    /* Values Section */
+    .values-section {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .value-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .value-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .value-card p {
+      color: #777;
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .testimonials-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .testimonial {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      margin: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    .testimonial-role {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .testimonial-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .testimonial-controls button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .testimonial-controls button:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    /* Call to Action */
+    .cta {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      text-align: center;
+      padding: 60px 0;
+    }
+    
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--light-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      color: #bbb;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: white;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    
+    .newsletter input {
+      background-color: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .mission-vision {
+        grid-template-columns: 1fr;
+      }
+      
+      .counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .counter-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>AcademyTutor</h1>
+      </div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutors.html">Tutors</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>About AcademyTutor</h1>
+      <p>Learn more about our mission, values, and the team behind AcademyTutor</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="active">About Us</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="images/img1.jpg" alt="About AcademyTutor">
+        </div>
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>AcademyTutor was founded in 2020 with a simple yet powerful vision: to make quality education accessible to everyone, regardless of geographic location or economic background. What started as a small group of passionate educators has grown into a global platform connecting thousands of students with expert tutors across various subjects.</p>
+          <p>Our journey began when our founder, Dr. Sarah Williams, recognized the growing need for personalized education that traditional classroom settings couldn't always provide. With over 15 years of experience in education, she assembled a team of dedicated professionals who shared her commitment to transforming how students learn.</p>
+          <p>Today, AcademyTutor serves students from elementary school to university level across more than 50 countries. We're proud to have facilitated over 250,000 tutoring sessions and helped countless students achieve their academic goals.</p>
+          
+          <div class="mission-vision">
+            <div class="mission-box">
+              <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+              <p>To empower students worldwide by connecting them with experienced tutors who can provide personalized learning experiences that build knowledge, confidence, and a lifelong love of learning.</p>
+            </div>
+            <div class="vision-box">
+              <h3><i class="fas fa-eye"></i> Our Vision</h3>
+              <p>To create a world where quality education is accessible to everyone, enabling individuals to reach their full potential regardless of their background or circumstances.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Counter Section -->
+  <section class="counter-section">
+    <div class="container">
+      <div class="counter-grid">
+        <div class="counter-box">
+          <div class="counter-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="counter" data-count="25000">25,000+</div>
+          <div class="counter-title">Happy Students</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div class="counter" data-count="500">500+</div>
+          <div class="counter-title">Expert Tutors</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <div class="counter" data-count="100">100+</div>
+          <div class="counter-title">Subjects Covered</div>
+        </div>
+        <div class="counter-box">
+          <div class="counter-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="counter" data-count="50">50+</div>
+          <div class="counter-title">Countries Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values Section -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Core Values</h2>
+        <p>These principles guide everything we do at AcademyTutor</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Excellence</h3>
+          <p>We are committed to maintaining the highest standards in education. Our tutors undergo rigorous vetting to ensure they have both subject expertise and teaching ability.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Integrity</h3>
+          <p>We believe in honesty, transparency, and ethical conduct in all our interactions with students, parents, tutors, and partners.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Inclusivity</h3>
+          <p>We embrace diversity and create a welcoming environment for learners of all backgrounds, abilities, and learning styles.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>We continuously explore new teaching methods and technologies to enhance the learning experience and improve educational outcomes.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hands-helping"></i>
+          </div>
+          <h3>Support</h3>
+          <p>We provide comprehensive support to both students and tutors, ensuring that everyone has the resources they need to succeed.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-mountain"></i>
+          </div>
+          <h3>Growth Mindset</h3>
+          <p>We believe in the power of perseverance and that with dedicated effort and proper guidance, everyone can improve and master new skills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Leadership Team</h2>
+        <p>The passionate educators and professionals behind AcademyTutor</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-image">
+            <img src="images/de1.webp" alt="Dr. Sarah Williams">
+          </div>
+          <div class="team-content">
+            <h3 class="team-name">Dr. Sarah Williams</h3>
+            <div class="team-role">Founder & CEO</div>
+            <div class="team-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img src="images/dr6.webp" alt="Michael Chen">
+          </div>
+          <div class="team-content">
+            <h3 class="team-name">Michael Chen</h3>
+            <div class="team-role">Chief Academic Officer</div>
+            <div class="team-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img src="images/dr3.webp" alt="Dr. James Rodriguez">
+          </div>
+          <div class="team-content">
+            <h3 class="team-name">Dr. James Rodriguez</h3>
+            <div class="team-role">Director of Curriculum</div>
+            <div class="team-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-image">
+            <img src="images/dr8.webp" alt="Emma Thompson">
+          </div>
+          <div class="team-content">
+            <h3 class="team-name">Emma Thompson</h3>
+            <div class="team-role">Head of Tutor Relations</div>
+            <div class="team-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>What People Say About Us</h2>
+        <p>Read testimonials from students, parents and tutors who have experienced AcademyTutor</p>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial" id="testimonial">
+          <div class="testimonial-content">
+            <p>"Working with AcademyTutor has been the most rewarding experience of my teaching career. The platform connects me with motivated students from around the world, and the tools provided make virtual teaching seamless and effective."</p>
+          </div>
+          <div class="testimonial-author">Professor Robert Johnson</div>
+          <div class="testimonial-role">Physics Tutor, 5 years with AcademyTutor</div>
+        </div>
+        <div class="testimonial-controls">
+          <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+          <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Join Our Growing Community</h2>
+      <p>Whether you're a student looking for help or an educator wanting to share your knowledge, AcademyTutor has a place for you.</p>
+      <a href="signup.html" class="btn btn-accent">Get Started Today</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>AcademyTutor</h3>
+          <p>Your trusted online learning platform connecting students with expert tutors for personalized education.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@academytutor.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our newsletter for the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Your Email Address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 AcademyTutor. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

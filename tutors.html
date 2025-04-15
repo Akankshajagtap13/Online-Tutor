@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Tutors - AcademyTutor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="tutors.css">
+  <style>
+    /* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+}
+
+.btn-accent:hover {
+  background-color: #c0392b;
+}
+
+/* Header Section */
+header {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav ul li a {
+  color: var(--dark-color);
+  font-weight: 600;
+  position: relative;
+}
+
+nav ul li a:hover, nav ul li a.active {
+  color: var(--primary-color);
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after, nav ul li a.active::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  padding: 130px 0 60px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background-color: #f2f2f2;
+  padding: 15px 0;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+}
+
+.breadcrumb ul li {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb ul li:after {
+  content: '/';
+  margin-left: 10px;
+  color: #999;
+}
+
+.breadcrumb ul li:last-child:after {
+  display: none;
+}
+
+.breadcrumb ul li a {
+  color: var(--primary-color);
+}
+
+.breadcrumb ul li.active {
+  color: #777;
+}
+
+/* Tutor Filter Section */
+.tutor-filter {
+  padding: 40px 0 20px;
+}
+
+.filter-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  font-size: 1rem;
+}
+
+.search-box button {
+  padding: 0 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: var(--secondary-color);
+}
+
+.filter-options {
+  display: flex;
+  gap: 15px;
+}
+
+.filter-options select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+/* Tutors Section */
+.tutors-section {
+  padding: 30px 0 60px;
+}
+
+.tutors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.tutor-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.tutor-card:hover {
+  transform: translateY(-5px);
+}
+
+.tutor-image {
+  width: 35%;
+  position: relative;
+  overflow: hidden;
+}
+
+.tutor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tutor-status {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  bottom: 15px;
+  right: 15px;
+  border: 2px solid white;
+}
+
+.tutor-status.online {
+  background-color: var(--success-color);
+}
+
+.tutor-status.offline {
+  background-color: #ccc;
+}
+
+.tutor-info {
+  width: 65%;
+  padding: 20px;
+}
+
+.tutor-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  color: var(--dark-color);
+}
+
+.tutor-subject {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.tutor-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tutor-rating .stars {
+  color: #f39c12;
+  margin-right: 8px;
+}
+
+.tutor-rating span {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.tutor-experience {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.tutor-bio {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.tutor-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.tutor-actions .btn {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.view-profile {
+  background-color: #f2f2f2;
+  color: var(--dark-color);
+}
+
+.view-profile:hover {
+  background-color: #e5e5e5;
+  color: var(--dark-color);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.pagination a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Become a Tutor Section */
+.become-tutor {
+  background-color: white;
+  padding: 60px 0;
+  margin-top: 20px;
+}
+
+.become-tutor .container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.become-tutor-content {
+  flex: 1;
+}
+
+.become-tutor-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--dark-color);
+}
+
+.become-tutor-content p {
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.benefits {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.benefits li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.benefits li i {
+  color: var(--success-color);
+  margin-right: 10px;
+}
+
+.become-tutor-image {
+  flex: 1;
+}
+
+.become-tutor-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+ /* Footer */
+ footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 60px 0 20px;
+  }
+  
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--light-color);
+  }
+  
+  .footer-links {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a {
+    color: #bbb;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: white;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    color: #bbb;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: white;
+  }
+  
+  .contact-info p {
+    margin-bottom: 10px;
+    color: #bbb;
+  }
+  
+  .newsletter input {
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #bbb;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .subjects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav ul.show {
+      display: flex;
+    }
+    
+    nav ul li {
+      margin: 10px 0;
+    }
+    
+    .mobile-menu-btn {
+      display: block;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .hero-buttons .btn {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    .subjects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .features-grid,
+    .subjects-grid,
+    .footer-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .hero h2 {
+      font-size: 2rem;
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>AcademyTutor</h1>
+      </div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutors.html" class="active">Tutors</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Meet Our Expert Tutors</h1>
+      <p>Learn from professionals with extensive experience and passion for teaching</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Tutors</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tutors Filter Section -->
+  <section class="tutor-filter">
+    <div class="container">
+      <div class="filter-container">
+        <div class="search-box">
+          <input type="text" id="tutorSearch" placeholder="Search tutors by name or subject...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="filter-options">
+          <select id="subjectFilter">
+            <option value="">All Subjects</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="science">Science</option>
+            <option value="languages">Languages</option>
+            <option value="computer-science">Computer Science</option>
+            <option value="social-studies">Social Studies</option>
+            <option value="arts">Arts & Music</option>
+            <option value="business">Business</option>
+            <option value="test-prep">Test Prep</option>
+          </select>
+          <select id="experienceFilter">
+            <option value="">Experience Level</option>
+            <option value="1-3">1-3 years</option>
+            <option value="4-7">4-7 years</option>
+            <option value="8+">8+ years</option>
+          </select>
+          <select id="ratingFilter">
+            <option value="">Rating</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="3">3+ Stars</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutors Section -->
+  <section class="tutors-section">
+    <div class="container">
+      <div class="tutors-grid" id="tutorsGrid">
+        <!-- Tutor Card 1 -->
+        <div class="tutor-card" data-subject="mathematics" data-experience="8+" data-rating="5">
+          <div class="tutor-image">
+            <img src="images/dr5.webp" alt="Dr. Robert Chen">
+            <div class="tutor-status online"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Dr. Robert Chen</h3>
+            <div class="tutor-subject">Mathematics</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span>5.0 (87 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 12 years experience
+            </div>
+            <p class="tutor-bio">PhD in Applied Mathematics with extensive experience teaching at university level. Specializes in calculus, linear algebra, and differential equations.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 2 -->
+        <div class="tutor-card" data-subject="science" data-experience="4-7" data-rating="4">
+          <div class="tutor-image">
+            <img src="images/de1.webp" alt="Dr. Emily Wong">
+            <div class="tutor-status online"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Dr. Emily Wong</h3>
+            <div class="tutor-subject">Science - Biology</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span>4.7 (63 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 7 years experience
+            </div>
+            <p class="tutor-bio">PhD in Molecular Biology with research experience. Passionate about making complex biological concepts accessible and engaging for students of all levels.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 3 -->
+        <div class="tutor-card" data-subject="languages" data-experience="8+" data-rating="5">
+          <div class="tutor-image">
+            <img src="images/dr6.webp" alt="Maria Rodriguez">
+            <div class="tutor-status offline"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Maria Rodriguez</h3>
+            <div class="tutor-subject">Languages - Spanish</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span>5.0 (95 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 10 years experience
+            </div>
+            <p class="tutor-bio">Native Spanish speaker with Master's in Language Education. Specializes in conversational Spanish and preparation for language exams with a focus on immersive learning.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 4 -->
+        <div class="tutor-card" data-subject="computer-science" data-experience="4-7" data-rating="5">
+          <div class="tutor-image">
+            <img src="images/de2.webp" alt="James Wilson">
+            <div class="tutor-status online"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>James Wilson</h3>
+            <div class="tutor-subject">Computer Science</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span>5.0 (72 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 6 years experience
+            </div>
+            <p class="tutor-bio">Software engineer with industry experience at major tech companies. Teaches programming (Python, Java, JavaScript), data structures, and web development with hands-on projects.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 5 -->
+        <div class="tutor-card" data-subject="social-studies" data-experience="8+" data-rating="4">
+          <div class="tutor-image">
+            <img src="images/dr7.webp" alt="Dr. Thomas Brown">
+            <div class="tutor-status offline"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Dr. Thomas Brown</h3>
+            <div class="tutor-subject">Social Studies - History</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span>4.2 (54 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 15 years experience
+            </div>
+            <p class="tutor-bio">History professor with focus on American and European history. Creates engaging lessons that connect historical events to current global contexts.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 6 -->
+        <div class="tutor-card" data-subject="arts" data-experience="4-7" data-rating="4">
+          <div class="tutor-image">
+            <img src="images/dr3.webp" alt="Sophia Kim">
+            <div class="tutor-status online"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Sophia Kim</h3>
+            <div class="tutor-subject">Arts - Music</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span>4.5 (48 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 5 years experience
+            </div>
+            <p class="tutor-bio">Classical pianist with Juilliard education. Teaches piano technique, music theory, and performance preparation for students from beginners to advanced levels.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 7 -->
+        <div class="tutor-card" data-subject="business" data-experience="8+" data-rating="4">
+          <div class="tutor-image">
+            <img src="images/dr8.webp" alt="Michael Johnson">
+            <div class="tutor-status offline"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Michael Johnson</h3>
+            <div class="tutor-subject">Business - Finance</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <span>4.1 (42 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 9 years experience
+            </div>
+            <p class="tutor-bio">Former investment banker with MBA. Specializes in finance, accounting, and business strategy with practical applications from real-world business cases.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutor Card 8 -->
+        <div class="tutor-card" data-subject="test-prep" data-experience="4-7" data-rating="5">
+          <div class="tutor-image">
+            <img src="images/dr4.webp" alt="Lisa Thompson">
+            <div class="tutor-status online"></div>
+          </div>
+          <div class="tutor-info">
+            <h3>Lisa Thompson</h3>
+            <div class="tutor-subject">Test Prep - SAT/ACT</div>
+            <div class="tutor-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span>4.9 (83 reviews)</span>
+            </div>
+            <div class="tutor-experience">
+              <i class="fas fa-briefcase"></i> 7 years experience
+            </div>
+            <p class="tutor-bio">Professional test prep coach with perfect scores on both SAT and ACT. Develops customized strategies for each student based on their learning style and strengths.</p>
+            <div class="tutor-actions">
+              <a href="#" class="btn view-profile">View Profile</a>
+              <a href="#" class="btn book-session">Book Session</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#"><i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Become a Tutor Section -->
+  <section class="become-tutor">
+    <div class="container">
+      <div class="become-tutor-content">
+        <h2>Join Our Teaching Team</h2>
+        <p>Are you passionate about teaching and want to share your knowledge? Join our platform and connect with students from around the world.</p>
+        <ul class="benefits">
+          <li><i class="fas fa-check-circle"></i> Set your own rates and schedule</li>
+          <li><i class="fas fa-check-circle"></i> Teach subjects you're passionate about</li>
+          <li><i class="fas fa-check-circle"></i> Access to our advanced teaching tools</li>
+          <li><i class="fas fa-check-circle"></i> Get paid securely and on time</li>
+        </ul>
+        <a href="#" class="btn btn-accent">Apply to Become a Tutor</a>
+      </div>
+      <div class="become-tutor-image">
+        <img src="images/img2.avif" alt="Become a Tutor">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>AcademyTutor</h3>
+          <p>Your trusted online learning platform connecting students with expert tutors for personalized education.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@academytutor.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our newsletter for the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Your Email Address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 AcademyTutor. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/tutors.js"></script>
+</body>
+</html>

@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Plans - AcademyTutor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/pricing.css">
+  <style>
+    /* pricing.css */
+/* CSS Reset */
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Global Styles */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2980b9;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      color: white;
+    }
+    
+    .btn-accent {
+      background-color: var(--accent-color);
+    }
+    
+    .btn-accent:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Header Section */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      color: var(--dark-color);
+      font-weight: 600;
+      position: relative;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+     /* Hero Section */
+     .hero {
+      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      color: white;
+      padding: 150px 0 80px;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .hero-buttons .btn {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+/* Page Header Styles */
+.page-header {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.page-header p {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+  background-color: #fff;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: ">";
+  margin: 0 10px;
+  color: #ccc;
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb .active {
+  color: #4a6bdc;
+}
+
+/* Toggle Switch Styles */
+.pricing-toggle {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.toggle-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.toggle-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.toggle-label.active {
+  color: #333;
+  font-weight: 600;
+}
+
+.discount {
+  background-color: #f8d7da;
+  color: #d63939;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 5px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e2e8f0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.toggle-switch label:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + label {
+  background-color: #4a6bdc;
+}
+
+.toggle-switch input:checked + label:before {
+  transform: translateX(30px);
+}
+
+/* Pricing Cards Styles */
+.pricing-plans {
+  padding: 40px 0 60px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card.popular {
+  border: 2px solid #4a6bdc;
+  transform: scale(1.03);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #4a6bdc;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.pricing-header {
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.pricing-header h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.pricing-header p {
+  color: #666;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 48px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+}
+
+.price .currency {
+  font-size: 24px;
+  vertical-align: top;
+  position: relative;
+  top: 5px;
+}
+
+.price .period {
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+}
+
+.annual-price {
+  display: none;
+}
+
+.pricing-features {
+  padding: 30px 20px;
+}
+
+.pricing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-features li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.pricing-features li i {
+  margin-right: 10px;
+  color: #4a6bdc;
+}
+
+.pricing-features li.not-included {
+  color: #999;
+}
+
+.pricing-features li.not-included i {
+  color: #ccc;
+}
+
+.pricing-footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #4a6bdc;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #4a6bdc;
+}
+
+.btn:hover {
+  background-color: #3a57b0;
+  border-color: #3a57b0;
+}
+
+.btn-accent {
+  background-color: #19b394;
+  border-color: #19b394;
+}
+
+.btn-accent:hover {
+  background-color: #148f76;
+  border-color: #148f76;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #4a6bdc;
+}
+
+.btn-outline:hover {
+  background-color: #f0f4fe;
+  color: #3a57b0;
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 16px;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+/* Single Sessions Styles */
+.single-sessions {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.section-title p {
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.session-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.session-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.session-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4fe;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.session-icon i {
+  font-size: 28px;
+  color: #4a6bdc;
+}
+
+.session-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.session-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.session-price span {
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+}
+
+.session-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Group Sessions Table Styles */
+.group-sessions {
+  padding: 60px 0;
+}
+
+.group-sessions-table {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #4a6bdc;
+  color: white;
+}
+
+th, td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+tbody tr {
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+  background-color: #f0f4fe;
+}
+
+/* FAQ Styles */
+.faq {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.faq-question h3 {
+  font-size: 16px;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.faq-toggle {
+  color: #4a6bdc;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  padding: 20px;
+  max-height: 300px;
+}
+
+.faq-item.active .faq-question {
+  border-bottom: 1px solid #eee;
+}
+
+/* Call to Action Styles */
+.cta {
+  background-color: #4a6bdc;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta .btn-outline {
+  border-color: white;
+  color: white;
+}
+
+.cta .btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .pricing-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+  
+  .pricing-card.popular:hover {
+    transform: translateY(-5px);
+  }
+  
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 40px 0;
+  }
+  
+  .page-header h1 {
+    font-size: 30px;
+  }
+  
+  .section-title h2 {
+    font-size: 28px;
+  }
+  
+  .cta {
+    padding: 60px 0;
+  }
+  
+  .cta h2 {
+    font-size: 28px;
+  }
+  
+  .cta p {
+    font-size: 16px;
+  }
+  
+  .pricing-features li {
+    font-size: 14px;
+  }
+  
+  .price {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-header h1 {
+    font-size: 26px;
+  }
+  
+  .page-header p {
+    font-size: 16px;
+  }
+  
+  .pricing-card {
+    margin: 0 15px;
+  }
+  
+  .sessions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .group-sessions-table {
+    margin: 0 15px;
+  }
+  
+  .faq-grid {
+    margin: 0 15px;
+  }
+  
+  .faq-question h3 {
+    font-size: 15px;
+  }
+  
+  .btn-lg {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+/* Footer */
+footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--light-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      color: #bbb;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: white;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    
+    .newsletter input {
+      background-color: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .subjects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .features-grid,
+      .subjects-grid,
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+    .page-header {
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      padding: 130px 0 60px;
+      text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #f9fbfd;
+  }
+
+  .page-header p {
+    font-size: 18px;
+    color: #f1f1f1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 40px 20px;
+    }
+
+    .page-header h1 {
+      font-size: 28px;
+    }
+
+    .page-header p {
+      font-size: 16px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>AcademyTutor</h1>
+      </div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutors.html">Tutors</a></li>
+          <li><a href="pricing.html" class="active">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Flexible Pricing Plans</h1>
+      <p>Choose the right plan that fits your learning needs and budget</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Pricing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Pricing Toggle -->
+  <section class="pricing-toggle">
+    <div class="container">
+      <div class="toggle-container">
+        <span class="toggle-label active">Monthly</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="billing-toggle">
+          <label for="billing-toggle"></label>
+        </div>
+        <span class="toggle-label">Annual <span class="discount">Save 20%</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-plans">
+    <div class="container">
+      <div class="pricing-grid">
+        <!-- Basic Plan -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Basic</h3>
+            <div class="price">
+              <div class="monthly-price"><span class="currency">$</span>49<span class="period">/month</span></div>
+              <div class="annual-price"><span class="currency">$</span>39<span class="period">/month</span></div>
+            </div>
+            <p>Perfect for beginners and occasional learners</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><i class="fas fa-check"></i> 4 hours of tutoring per month</li>
+              <li><i class="fas fa-check"></i> Access to recorded sessions</li>
+              <li><i class="fas fa-check"></i> Basic study materials</li>
+              <li><i class="fas fa-check"></i> Email support</li>
+              <li class="not-included"><i class="fas fa-times"></i> Homework assistance</li>
+              <li class="not-included"><i class="fas fa-times"></i> Practice tests and quizzes</li>
+              <li class="not-included"><i class="fas fa-times"></i> Priority scheduling</li>
+            </ul>
+          </div>
+          <div class="pricing-footer">
+            <a href="#" class="btn">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Standard Plan -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="pricing-header">
+            <h3>Standard</h3>
+            <div class="price">
+              <div class="monthly-price"><span class="currency">$</span>99<span class="period">/month</span></div>
+              <div class="annual-price"><span class="currency">$</span>79<span class="period">/month</span></div>
+            </div>
+            <p>For regular students seeking academic improvement</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><i class="fas fa-check"></i> 8 hours of tutoring per month</li>
+              <li><i class="fas fa-check"></i> Access to recorded sessions</li>
+              <li><i class="fas fa-check"></i> Comprehensive study materials</li>
+              <li><i class="fas fa-check"></i> Email and chat support</li>
+              <li><i class="fas fa-check"></i> Homework assistance</li>
+              <li><i class="fas fa-check"></i> Practice tests and quizzes</li>
+              <li class="not-included"><i class="fas fa-times"></i> Priority scheduling</li>
+            </ul>
+          </div>
+          <div class="pricing-footer">
+            <a href="#" class="btn btn-accent">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Premium</h3>
+            <div class="price">
+              <div class="monthly-price"><span class="currency">$</span>199<span class="period">/month</span></div>
+              <div class="annual-price"><span class="currency">$</span>159<span class="period">/month</span></div>
+            </div>
+            <p>For dedicated students aiming for excellence</p>
+          </div>
+          <div class="pricing-features">
+            <ul>
+              <li><i class="fas fa-check"></i> 16 hours of tutoring per month</li>
+              <li><i class="fas fa-check"></i> Access to recorded sessions</li>
+              <li><i class="fas fa-check"></i> Premium study materials</li>
+              <li><i class="fas fa-check"></i> 24/7 support</li>
+              <li><i class="fas fa-check"></i> Homework assistance</li>
+              <li><i class="fas fa-check"></i> Practice tests and quizzes</li>
+              <li><i class="fas fa-check"></i> Priority scheduling</li>
+            </ul>
+          </div>
+          <div class="pricing-footer">
+            <a href="#" class="btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Single Session -->
+  <section class="single-sessions">
+    <div class="container">
+      <div class="section-title">
+        <h2>Need Just a Few Sessions?</h2>
+        <p>Purchase individual tutoring sessions without a monthly commitment</p>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Single Session</h3>
+          <div class="session-price">$30<span>/hour</span></div>
+          <p>One-time tutoring session with your chosen tutor</p>
+          <a href="#" class="btn btn-outline">Book Now</a>
+        </div>
+        <div class="session-card">
+          <div class="session-icon">
+            <i class="fas fa-cubes"></i>
+          </div>
+          <h3>5-Pack</h3>
+          <div class="session-price">$135<span>/5 hours</span></div>
+          <p>5 hours of tutoring sessions (Save $15)</p>
+          <a href="#" class="btn btn-outline">Book Now</a>
+        </div>
+        <div class="session-card">
+          <div class="session-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <h3>10-Pack</h3>
+          <div class="session-price">$250<span>/10 hours</span></div>
+          <p>10 hours of tutoring sessions (Save $50)</p>
+          <a href="#" class="btn btn-outline">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group Sessions -->
+  <section class="group-sessions">
+    <div class="container">
+      <div class="section-title">
+        <h2>Group Learning Sessions</h2>
+        <p>Learn together and save with our group tutoring options</p>
+      </div>
+      <div class="group-sessions-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Group Size</th>
+              <th>Hours</th>
+              <th>Price per Student</th>
+              <th>Savings</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2-3 Students</td>
+              <td>10 hours</td>
+              <td>$180</td>
+              <td>Save 28%</td>
+              <td><a href="#" class="btn btn-sm">Book Now</a></td>
+            </tr>
+            <tr>
+              <td>4-6 Students</td>
+              <td>10 hours</td>
+              <td>$150</td>
+              <td>Save 40%</td>
+              <td><a href="#" class="btn btn-sm">Book Now</a></td>
+            </tr>
+            <tr>
+              <td>7-10 Students</td>
+              <td>10 hours</td>
+              <td>$120</td>
+              <td>Save 52%</td>
+              <td><a href="#" class="btn btn-sm">Book Now</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our pricing and plans</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do I choose the right plan?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Consider your learning goals, frequency of study, and budget. If you need regular weekly sessions, a monthly plan is more cost-effective. For occasional help, single sessions may be better. Our Basic plan works well for supplementary help, while Premium is ideal for intensive exam preparation or advanced topics.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I change plans later?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can upgrade or downgrade your plan at any time. Changes will take effect at the start of your next billing cycle. Any unused hours from your current plan will be carried over to your new plan.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What happens to unused hours?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Unused hours roll over for one month only. This means you have two months to use your allocated hours before they expire. We recommend scheduling regular sessions to make the most of your subscription.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How do I schedule sessions?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>After signing up, you'll get access to our scheduling platform where you can see tutor availability and book sessions. Premium plan members get priority access to book tutors up to 4 weeks in advance, while other plans can book up to 2 weeks ahead.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What if I need to cancel a session?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>You can cancel or reschedule a session up to 24 hours before the scheduled time without penalty. Late cancellations or no-shows will result in the session being deducted from your monthly hours.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are there any refunds if I'm not satisfied?</h3>
+            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a 14-day satisfaction guarantee for new subscribers. If you're not completely satisfied with our service, contact our support team within 14 days of your first session for a full refund. For individual sessions, you can request a replacement session with a different tutor if you're not satisfied.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Boost Your Academic Performance?</h2>
+        <p>Join thousands of students who have improved their grades with AcademyTutor</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn btn-lg">Get Started Today</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>AcademyTutor</h3>
+          <p>Your trusted online learning platform connecting students with expert tutors for personalized education.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@academytutor.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our newsletter for the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Your Email Address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 AcademyTutor. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

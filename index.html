@@ -1,336 +1,878 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angela Doe | Professional Online Tutor</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcademyTutor - Your Learning Partner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Global Styles */
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2980b9;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--dark-color);
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      color: var(--secondary-color);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      color: white;
+    }
+    
+    .btn-accent {
+      background-color: var(--accent-color);
+    }
+    
+    .btn-accent:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Header Section */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      color: var(--dark-color);
+      font-weight: 600;
+      position: relative;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      color: white;
+      padding: 150px 0 80px;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .hero-buttons .btn {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--dark-color);
+      margin-bottom: 15px;
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: #777;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--dark-color);
+    }
+    
+    .feature-card p {
+      color: #777;
+    }
+    
+    /* Subjects Section */
+    .subjects {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+    
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    
+    .subject-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .subject-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .subject-img {
+      height: 180px;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 4rem;
+    }
+    
+    .subject-content {
+      padding: 20px;
+    }
+    
+    .subject-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    
+    .subject-content p {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .subject-card .btn {
+      width: 100%;
+      padding: 8px;
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .testimonials-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .testimonial {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 30px;
+      margin: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--dark-color);
+    }
+    
+    .testimonial-role {
+      color: #777;
+      font-size: 0.9rem;
+    }
+    
+    .testimonial-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .testimonial-controls button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    
+    .testimonial-controls button:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    /* Call to Action Section */
+    .cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--light-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #bbb;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      color: #bbb;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: white;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+      color: #bbb;
+    }
+    
+    .newsletter input {
+      background-color: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .subjects-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .features-grid,
+      .subjects-grid,
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Angela Doe</h1>
-                <p>Professional Online Tutor</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#subjects">Subjects</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+  <!-- Header Section -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h1>AcademyTutor</h1>
+      </div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><a href="tutors.html">Tutors</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Quality Education from Anywhere</h1>
-                <p>Personalized online tutoring to help you achieve your academic goals</p>
-                <div class="cta-buttons">
-                    <a href="#pricing" class="btn primary-btn">View Pricing</a>
-                    <a href="#contact" class="btn secondary-btn">Book a Free Session</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="/images/img1.jpg" alt="Online tutoring session">
-            </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Learn From The Best Tutors Around The World</h2>
+        <p>Connect with expert tutors online for personalized learning experiences that fit your schedule. Improve your grades and build confidence in any subject.</p>
+        <div class="hero-buttons">
+          <a href="courses.html" class="btn">Explore Courses</a>
+          <a href="signup.html" class="btn btn-accent">Sign Up Free</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="/images/img2.avif" alt="Angela Doe">
-                </div>
-                <div class="about-text">
-                    <h3>Experienced Educator with a Passion for Learning</h3>
-                    <p>With over 10 years of teaching experience, I specialize in creating personalized learning experiences that help students reach their full potential.</p>
-                    <p>I hold a Master's degree in Education from Stanford University and have taught students from elementary school to college level.</p>
-                    <ul class="qualifications">
-                        <li><i class="fas fa-check-circle"></i> Certified Teacher</li>
-                        <li><i class="fas fa-check-circle"></i> Master's in Education</li>
-                        <li><i class="fas fa-check-circle"></i> 10+ Years Experience</li>
-                        <li><i class="fas fa-check-circle"></i> Student-Centered Approach</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose AcademyTutor?</h2>
+        <p>We provide a complete learning experience with features designed to help you succeed</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <h3>Expert Tutors</h3>
+          <p>Learn from certified tutors with years of experience in teaching and their respective fields.</p>
         </div>
-    </section>
-
-    <section id="subjects" class="subjects">
-        <div class="container">
-            <h2 class="section-title">Subjects I Teach</h2>
-            <div class="subjects-grid">
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Mathematics</h3>
-                    <p>Algebra, Calculus, Geometry, Statistics</p>
-                </div>
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h3>Science</h3>
-                    <p>Physics, Chemistry, Biology</p>
-                </div>
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3>English</h3>
-                    <p>Literature, Writing, Grammar</p>
-                </div>
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <h3>Social Studies</h3>
-                    <p>History, Geography, Government</p>
-                </div>
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Computer Science</h3>
-                    <p>Programming, Web Development</p>
-                </div>
-                <div class="subject-card">
-                    <div class="subject-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Test Prep</h3>
-                    <p>SAT, ACT, GRE, AP Exams</p>
-                </div>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-laptop"></i>
+          </div>
+          <h3>Interactive Learning</h3>
+          <p>Engage in real-time sessions with screen sharing, whiteboard tools, and collaborative documents.</p>
         </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2 class="section-title">Tutoring Packages</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="package-name">Basic</div>
-                    <div class="package-price">$40<span>/hour</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> 1-on-1 Online Sessions</li>
-                        <li><i class="fas fa-check"></i> Homework Help</li>
-                        <li><i class="fas fa-check"></i> Email Support</li>
-                        <li><i class="fas fa-times"></i> Custom Learning Materials</li>
-                        <li><i class="fas fa-times"></i> Progress Reports</li>
-                    </ul>
-                    <a href="#contact" class="btn primary-btn">Book Now</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="package-name">Standard</div>
-                    <div class="package-price">$50<span>/hour</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> 1-on-1 Online Sessions</li>
-                        <li><i class="fas fa-check"></i> Homework Help</li>
-                        <li><i class="fas fa-check"></i> Email Support</li>
-                        <li><i class="fas fa-check"></i> Custom Learning Materials</li>
-                        <li><i class="fas fa-times"></i> Progress Reports</li>
-                    </ul>
-                    <a href="#contact" class="btn primary-btn">Book Now</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="package-name">Premium</div>
-                    <div class="package-price">$60<span>/hour</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> 1-on-1 Online Sessions</li>
-                        <li><i class="fas fa-check"></i> Homework Help</li>
-                        <li><i class="fas fa-check"></i> Email Support</li>
-                        <li><i class="fas fa-check"></i> Custom Learning Materials</li>
-                        <li><i class="fas fa-check"></i> Progress Reports</li>
-                    </ul>
-                    <a href="#contact" class="btn primary-btn">Book Now</a>
-                </div>
-            </div>
-            <div class="pricing-note">
-                <p>Package discounts available for multiple sessions booked in advance</p>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Flexible Schedule</h3>
+          <p>Book sessions at your convenience, 24/7, and learn at your own pace from anywhere.</p>
         </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Student Testimonials</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>Angela helped me improve my math grade from a C to an A in just two months. Her patient and thorough approach made all the difference!</p>
-                        <div class="student-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>High School Student</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>As a parent, I'm thrilled with the progress my son has made since working with Angela. She makes learning fun and engaging.</p>
-                        <div class="student-info">
-                            <h4>Michael Thompson</h4>
-                            <p>Parent of Middle School Student</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                        <p>I was struggling with my college physics course until I found Angela. Her clear explanations and problem-solving strategies were exactly what I needed.</p>
-                        <div class="student-info">
-                            <h4>David Lee</h4>
-                            <p>College Student</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <div class="slider-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Progress Tracking</h3>
+          <p>Monitor your improvement with detailed analytics and regular assessments.</p>
         </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Book a Session</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to boost your academic performance? Contact me today to schedule your first session.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>info@angeladoe.com</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <p>(555) 123-4567</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <p>Available: Mon-Fri, 9am-7pm</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="bookingForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="Mathematics">Mathematics</option>
-                                <option value="Science">Science</option>
-                                <option value="English">English</option>
-                                <option value="Social Studies">Social Studies</option>
-                                <option value="Computer Science">Computer Science</option>
-                                <option value="Test Prep">Test Prep</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary-btn">Send Request</button>
-                    </form>
-                </div>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-comment-dots"></i>
+          </div>
+          <h3>Instant Support</h3>
+          <p>Get quick answers to your questions through chat or email support.</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Angela Doe</h3>
-                    <p>Professional Online Tutor</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#subjects">Subjects</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Subscribe to Newsletter</h4>
-                    <p>Get study tips and special offers</p>
-                    <form id="newsletterForm">
-                        <input type="email" placeholder="Your email address" required>
-                        <button type="submit" class="btn primary-btn">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Angela Doe Online Tutoring. All rights reserved.</p>
-            </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Money-Back Guarantee</h3>
+          <p>Not satisfied with your session? We offer a 100% refund on your first lesson.</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Subjects Section -->
+  <section class="subjects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Popular Subjects</h2>
+        <p>Browse through our wide range of subjects taught by experienced tutors</p>
+      </div>
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-square-root-alt"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Mathematics</h3>
+            <p>Algebra, Calculus, Statistics, Geometry and more</p>
+            <a href="courses.html#math" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-atom"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Science</h3>
+            <p>Physics, Chemistry, Biology, Earth Science</p>
+            <a href="courses.html#science" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Languages</h3>
+            <p>English, Spanish, French, Mandarin, German</p>
+            <a href="courses.html#languages" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Computer Science</h3>
+            <p>Programming, Web Development, Data Science</p>
+            <a href="courses.html#cs" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-landmark"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Social Studies</h3>
+            <p>History, Geography, Economics, Political Science</p>
+            <a href="courses.html#social" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-music"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Arts & Music</h3>
+            <p>Drawing, Painting, Music Theory, Instruments</p>
+            <a href="courses.html#arts" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Business</h3>
+            <p>Accounting, Marketing, Management, Finance</p>
+            <a href="courses.html#business" class="btn">View Courses</a>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-img">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="subject-content">
+            <h3>Test Prep</h3>
+            <p>SAT, ACT, GRE, GMAT, LSAT, MCAT</p>
+            <a href="courses.html#test-prep" class="btn">View Courses</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Students Say</h2>
+        <p>Read testimonials from students who have transformed their learning experience with AcademyTutor</p>
+      </div>
+      <div class="testimonials-container">
+        <div class="testimonial" id="testimonial">
+          <div class="testimonial-content">
+            <p>"Thanks to AcademyTutor, I went from struggling with calculus to acing my final exam. My tutor explained concepts in a way that finally made sense to me. The flexible scheduling made it easy to fit sessions around my busy college schedule."</p>
+          </div>
+          <div class="testimonial-author">Sarah Johnson</div>
+          <div class="testimonial-role">University Student</div>
+        </div>
+        <div class="testimonial-controls">
+          <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+          <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Transform Your Learning Experience?</h2>
+      <p>Join thousands of students who've improved their grades and confidence with our expert tutors.</p>
+      <a href="signup.html" class="btn btn-accent">Get Started Today</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>AcademyTutor</h3>
+          <p>Your trusted online learning platform connecting students with expert tutors for personalized education.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="tutors.html">Tutors</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@academytutor.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Subscribe to our newsletter for the latest updates and offers.</p>
+          <form>
+            <input type="email" placeholder="Your Email Address">
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 AcademyTutor. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+      mobileMenuBtn.innerHTML = navMenu.classList.contains('show') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Testimonials Slider
+    const testimonials = [
+      {
+        content: "Thanks to AcademyTutor, I went from struggling with calculus to acing my final exam. My tutor explained concepts in a way that finally made sense to me. The flexible scheduling made it easy to fit sessions around my busy college schedule.",
+        author: "Sarah Johnson",
+        role: "University Student"
+      },
+      {
+        content: "As a working professional trying to learn a new language, AcademyTutor has been a game-changer. My Spanish tutor is excellent and the platform makes it so easy to schedule lessons around my work commitments.",
+        author: "Michael Chen",
+        role: "Marketing Director"
+      },
+      {
+        content: "My son was falling behind in science class until we found AcademyTutor. His grades have improved drastically and his confidence has soared. The progress reports help us keep track of his improvement.",
+        author: "Amanda Rodriguez",
+        role: "Parent"
+      },
+      {
+        content: "Preparing for my GMAT exam was daunting until I started sessions with my AcademyTutor instructor. The personalized study plan and practice tests made all the difference. I exceeded my target score!",
+        author: "David Kim",
+        role: "MBA Applicant"
+      }
+    ];
+    
+    let currentTestimonialIndex = 0;
+    const testimonialElement = document.getElementById('testimonial');
+    const prevTestimonial = document.getElementById('prevTestimonial');
+    const nextTestimonial = document.getElementById('nextTestimonial');
+    
+    function updateTestimonial() {
+      const current = testimonials[currentTestimonialIndex];
+      testimonialElement.innerHTML = `
+        <div class="testimonial-content">
+          <p>"${current.content}"</p>
+        </div>
+        <div class="testimonial-author">${current.author}</div>
+        <div class="testimonial-role">${current.role}</div>
+      `;
+    }
+    
+    prevTestimonial.addEventListener('click', () => {
+      currentTestimonialIndex = (currentTestimonialIndex === 0) 
+        ? testimonials.length - 1 
+        : currentTestimonialIndex - 1;
+      updateTestimonial();
+    });
+    
+    nextTestimonial.addEventListener('click', () => {
+      currentTestimonialIndex = (currentTestimonialIndex === testimonials.length - 1) 
+        ? 0 
+        : currentTestimonialIndex + 1;
+      updateTestimonial();
+    });
+    
+    // Auto slider for testimonials
+    setInterval(() => {
+      currentTestimonialIndex = (currentTestimonialIndex === testimonials.length - 1) 
+        ? 0 
+        : currentTestimonialIndex + 1;
+      updateTestimonial();
+    }, 8000);
+  </script>
 </body>
 </html>
